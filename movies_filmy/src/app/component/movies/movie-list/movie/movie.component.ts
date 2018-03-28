@@ -16,6 +16,7 @@ export class MovieComponent implements OnInit {
   @Input() flag: any;
   @Output() CountDel = new EventEmitter();
   @Output() err =new EventEmitter();
+  @Output() updatevalue =new EventEmitter();
   public movieUrl=AppConfig.baseUrl;
   public favMovies : any =[];
   public errorMsg ='';
@@ -46,6 +47,7 @@ export class MovieComponent implements OnInit {
   getFavorite() {
     this.jsonApiService.getFavourite().subscribe((res) =>{
       this.favMovies = res;
+      console.log("hello sanjay sir "+this.favMovies);
       this.CountDel.emit({
         'favMovies': this.favMovies
       });
@@ -67,12 +69,13 @@ export class MovieComponent implements OnInit {
   }
 
   // Set Movie details to update
-  setMovie(movie) {
-    this.selectedMovie = movie;
-  }
+  updateMov(movie) {
+  console.log(movie);
+     this.updatevalue.emit({
 
-  onSubmit(value: any) {
-    console.log(value);
+        'movie': movie
+
+      })
   }
 
 }

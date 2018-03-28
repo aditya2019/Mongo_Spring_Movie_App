@@ -1,5 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { AppConfig } from './../../../config/config.constant';
+import { JsonApiService } from './../../../services/json-api.service';
+import {NgForm} from '@angular/forms';
+
 
 @Component({
 	selector: 'app-movie-list',
@@ -15,7 +18,9 @@ export class MovieListComponent implements OnInit {
   public favMovies=[];
   public errorMsg="";
   public displayError:boolean=false;
-  constructor() {
+	public currentMovie : any={};
+	 @ViewChild('modalBtn') modalBtn: ElementRef;
+  constructor(private jsonApiService: JsonApiService) {
   }
 
   ngOnInit() {
@@ -24,6 +29,7 @@ export class MovieListComponent implements OnInit {
 
   setValueTofav(event){
     this.favMovies=event.favMovies;
+
     this.CountDel.emit({
       'favMovies': this.favMovies
     });
@@ -36,4 +42,28 @@ export class MovieListComponent implements OnInit {
     if(this.errorMsg!=""){
     this.displayError=true;
       }}
+
+
+			setMovie(event){
+			  this.currentMovie=event.movie;
+			  this.modalBtn.nativeElement.click();
+
+			}
+
+			onSubmit(currentMovie) {
+				this.jsonApiService.updateMovies(this.currentMovie).subscribe(data=>{
+	      this.favMovies=this.currentMovie;
+				console.log(this.currentMovie);
+	    },(error:any)=>{
+	      this.errorMsg = error.statusText;
+	      //this.showerror = true;
+	    })
+	    }
+
+			 // update(movieId){
+       //
+		   //   },(error:any)=>{
+       //
+		   //   }
+
 }

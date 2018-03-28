@@ -15,7 +15,7 @@ export class FavMoviesComponent implements OnInit {
 	public showError : boolean = false;
 	public flag = 'list';
 
-	constructor(private jsonApiService: JsonApiService) { 
+	constructor(private jsonApiService: JsonApiService) {
 	}
 
 	ngOnInit() {

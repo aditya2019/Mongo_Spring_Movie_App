@@ -30,6 +30,12 @@ deleteMovie(movieId){
   .map(data => data.json(),
     (error: any)=>this.handleError(error));
 }
+// updated data 
+updateMovies(movie){
+  return this.http.put(AppConfig.apiUrl+'/updateMovie',movie, {headers: this.headers})
+  .map(data => data.json(),
+    (error: any)=>this.handleError(error));
+}
 
 // Handle errors
 private handleError(error: Response){
