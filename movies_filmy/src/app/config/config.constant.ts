@@ -3,4 +3,5 @@ export class AppConfig{
   public static baseUrl="http://image.tmdb.org/t/p/w185/";
 //  public static apiUrl = "http://localhost:3000";
   public static apiUrl = "http://localhost:8095/favmovie";
+  public static userUrl = "http://localhost:8095";
 }

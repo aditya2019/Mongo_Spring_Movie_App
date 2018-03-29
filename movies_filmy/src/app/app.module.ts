@@ -12,6 +12,8 @@ import { MovieListComponent } from './component/movies/movie-list/movie-list.com
 import { MovieComponent } from './component/movies/movie-list/movie/movie.component';
 import { MovieSearchComponent } from './component/movies/movie-search/movie-search.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { LoginComponent } from './component/form/login/login.component';
+import { RegistrationComponent } from './component/form/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AppRoutingModule } from './/app-routing.module';
   MoviesComponent,
   MovieListComponent,
   MovieComponent,
-  MovieSearchComponent
+  MovieSearchComponent,
+  LoginComponent,
+  RegistrationComponent
   ],
   imports: [
   BrowserModule,

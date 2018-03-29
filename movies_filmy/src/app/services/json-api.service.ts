@@ -30,7 +30,7 @@ deleteMovie(movieId){
   .map(data => data.json(),
     (error: any)=>this.handleError(error));
 }
-// updated data 
+// updated data
 updateMovies(movie){
   return this.http.put(AppConfig.apiUrl+'/updateMovie',movie, {headers: this.headers})
   .map(data => data.json(),
@@ -41,4 +41,15 @@ updateMovies(movie){
 private handleError(error: Response){
   return Observable.throw(error.statusText);
 }
+
+
+
+//user details
+userdetails(Userobj)
+{
+  return this.http.post(AppConfig.userUrl+'/usersend/Userdata', Userobj ,{headers: this.headers})
+  .map(data => data.json(),
+    (error: any)=>this.handleError(error));
+}
+
 }
