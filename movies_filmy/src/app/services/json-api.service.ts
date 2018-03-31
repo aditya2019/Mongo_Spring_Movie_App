@@ -6,6 +6,9 @@ import { AppConfig }from '../config/config.constant';
 
 @Injectable()
 export class JsonApiService {
+
+  public msg : any;
+
   private headers =new Headers({ 'Content-Type':'application/json'})
   constructor(private http: Http) {
   }
@@ -39,10 +42,10 @@ updateMovies(movie){
 
 // Handle errors
 private handleError(error: Response){
-  return Observable.throw(error.statusText);
+ this.msg=error;
+ this.msg.toString();
+  // return Observable.throw(this.msg);
 }
-
-
 
 //user details
 userdetails(Userobj)
@@ -50,6 +53,14 @@ userdetails(Userobj)
   return this.http.post(AppConfig.userUrl+'/usersend/Userdata', Userobj ,{headers: this.headers})
   .map(data => data.json(),
     (error: any)=>this.handleError(error));
+}
+
+// login data
+loginUser(Useraccess){
+  return this.http.post(AppConfig.userUrl+'/usersend/data',Useraccess, {headers: this.headers})
+  .map(loginData => loginData.json(),
+
+    (error:any) =>this.handleError(error));
 }
 
 }

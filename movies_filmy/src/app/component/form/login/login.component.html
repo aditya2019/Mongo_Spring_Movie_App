@@ -1,0 +1,21 @@
+<!--      alert box for show error       -->
+<div class="alert" *ngIf="wrong === 'yes'">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Danger!</strong>  {{this.errorMsg.error}}
+</div>
+
+<!--       Login Page       -->
+<div class="container w-50 my-4 accesss">
+<form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" [(ngModel)]="Useraccess.email" class="form-control" id="loginemail" aria-describedby="emailHelp" name="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" [(ngModel)]="Useraccess.pass" class="form-control" id="loginpassword" name="pass">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="login(Useraccess)">Submit</button>
+  <button type="submit" class="btn btn-primary" routerLink="/register">Register</button>
+</form>
+</div>

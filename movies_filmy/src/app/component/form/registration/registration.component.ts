@@ -8,6 +8,7 @@ import { JsonApiService } from './../../../services/json-api.service';
 })
 export class RegistrationComponent implements OnInit {
 public Userobj : any={};
+public correct = '';
   constructor(private jsonApiService: JsonApiService) { }
 
   ngOnInit() {
@@ -15,11 +16,9 @@ public Userobj : any={};
   userdetails(Userobj) {
     this.jsonApiService.userdetails(Userobj).subscribe((res) =>{
       this.Userobj={};
-      //this.showError = false;
-    },(error:any)=>{
 
+      this.correct='yes';
+    },(error:any)=>{
   })
 }
-
-
 }
